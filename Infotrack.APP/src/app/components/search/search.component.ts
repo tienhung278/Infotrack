@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {SearchEngineService} from "./services/search-engine.service";
-import {Observable, tap} from "rxjs";
+import {Observable, catchError, of, tap} from "rxjs";
 import {AsyncPipe, JsonPipe, NgForOf, NgIf} from "@angular/common";
 import {MatCard, MatCardActions, MatCardContent, MatCardFooter, MatCardHeader} from "@angular/material/card";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
@@ -11,6 +11,7 @@ import {SearchResponse} from "./models/search-response";
 import {MatButton} from "@angular/material/button";
 import {RankingResponse} from "./models/ranking-response";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-search',
@@ -43,7 +44,7 @@ export class SearchComponent implements OnInit {
   myForm: FormGroup;
   isLoading: boolean;
 
-  constructor(private fb: FormBuilder, private searchEngineService: SearchEngineService) {
+  constructor(private fb: FormBuilder, private searchEngineService: SearchEngineService, private toastr: ToastrService) {
     this.searchResponse$ = new Observable<SearchResponse>();
     this.rankingResponse$ = new Observable<RankingResponse>();
     this.isLoading = false;
@@ -63,6 +64,11 @@ export class SearchComponent implements OnInit {
     this.isLoading = true;
     this.rankingResponse$ = this.searchEngineService.getRanking(myForm.value).pipe(
       tap(_ => this.isLoading = false),
+      catchError(err => {
+        this.isLoading = false;
+        this.toastr.error(err.error.detail);
+        return of({ranking: []});
+      })
     );
   }
 }
