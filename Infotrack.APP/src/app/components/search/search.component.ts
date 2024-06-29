@@ -62,7 +62,7 @@ export class SearchComponent implements OnInit {
   onSubmit(myForm: FormGroup) {
     this.isLoading = true;
     this.rankingResponse$ = this.searchEngineService.getRanking(myForm.value).pipe(
-      tap(res => this.isLoading = false),
+      tap(_ => this.isLoading = false),
     );
   }
 }
