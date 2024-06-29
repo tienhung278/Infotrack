@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SearchEngine} from "../models/search-engine.model";
 import {Observable} from "rxjs";
+import {SearchResponse} from "../models/search-response";
+import {RankingResponse} from "../models/ranking-response";
+import {RankingRequest} from "../models/ranking-request";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +17,10 @@ export class SearchEngineService {
   }
 
   public getSearchEngines() {
-    return this.httpClient.get<SearchEngine[]>(`${this.baseUrl}/searchengines`)
+    return this.httpClient.get<SearchResponse>(`${this.baseUrl}/searchengines`);
+  }
+
+  public getRanking(payload: RankingRequest): Observable<RankingResponse> {
+    return this.httpClient.post<RankingResponse>(`${this.baseUrl}/ranking`, payload);
   }
 }
