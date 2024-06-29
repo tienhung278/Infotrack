@@ -16,7 +16,8 @@
         <mat-label>Website URL</mat-label>
         <input matInput formControlName="websiteUrl">
       </mat-form-field>
-      <mat-form-field appearance="outline" [floatLabel]="'always'" *ngIf="((searchResponse$ | async)?.searchEngines) as searchEngines">
+      <mat-form-field appearance="outline" [floatLabel]="'always'"
+                      *ngIf="((searchResponse$ | async)?.searchEngines) as searchEngines">
         <mat-label>Search engines</mat-label>
         <mat-select formControlName="searchEngineId">
           <mat-option *ngFor="let searchEngine of searchEngines" [value]="searchEngine.id">

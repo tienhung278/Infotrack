@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {SearchEngine} from "../models/search-engine.model";
 import {Observable} from "rxjs";
 import {SearchResponse} from "../models/search-response";
 import {RankingResponse} from "../models/ranking-response";
@@ -10,7 +9,7 @@ import {RankingRequest} from "../models/ranking-request";
   providedIn: 'root'
 })
 export class SearchEngineService {
-  baseUrl: string ;
+  baseUrl: string;
 
   constructor(private httpClient: HttpClient) {
     this.baseUrl = 'http://localhost:5051';
