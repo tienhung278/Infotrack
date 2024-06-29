@@ -33,7 +33,7 @@ public class GetRankingHandler(IApplicationDbContext dbContext) : IRequestHandle
         return new GetRankingQueryResult(rankingList);
     }
     
-    private List<string> ExtractResponse(SearchEngine searchEngine,string response)
+    private List<string> ExtractResponse(Domain.Models.SearchEngine searchEngine,string response)
     {
         List<string> links = new List<string>();
         string pattern = @$"{searchEngine.RegEx}";
