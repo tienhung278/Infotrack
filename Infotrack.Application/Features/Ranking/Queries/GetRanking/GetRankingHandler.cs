@@ -1,12 +1,12 @@
 ﻿using System.Text.RegularExpressions;
 using System.Web;
 using Infotrack.Application.Data;
-using Infotrack.Application.Exceptions;
+using Infotrack.Application.Features.Ranking.Exceptions;
 using Infotrack.Domain.Models;
 using Infotrack.Domain.ValueObjects;
 using MediatR;
 
-namespace Infotrack.Application.Queries.GetRanking;
+namespace Infotrack.Application.Features.Ranking.Queries.GetRanking;
 
 public class GetRankingHandler(IApplicationDbContext dbContext) : IRequestHandler<GetRankingQuery, GetRankingQueryResult>
 {

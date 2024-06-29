@@ -1,5 +1,4 @@
-﻿using Infotrack.Domain.Abstractions;
-using Infotrack.Domain.ValueObjects;
+﻿using Infotrack.Domain.ValueObjects;
 
 namespace Infotrack.Domain.Models;
 

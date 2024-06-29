@@ -1,4 +1,4 @@
-﻿namespace Infotrack.Domain.Abstractions;
+﻿namespace Infotrack.Domain.Models;
 
 public abstract class Entity<T>
 {

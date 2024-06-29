@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Infotrack.Application.Queries.GetRanking;
+namespace Infotrack.Application.Features.Ranking.Queries.GetRanking;
 
 public record GetRankingQuery(int NumOfResults, string Keywords, string WebsiteUrl, Guid SearchEngineId) : IRequest<GetRankingQueryResult>;
 

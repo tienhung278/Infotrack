@@ -1,5 +1,5 @@
 ﻿using Carter;
-using Infotrack.Application.Queries.GetRanking;
+using Infotrack.Application.Features.Ranking.Queries.GetRanking;
 using MediatR;
 
 namespace Infotrack.API.Endpoints;

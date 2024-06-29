@@ -16,4 +16,8 @@
       <ProjectReference Include="..\Infotrack.Domain\Infotrack.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Features\Ranking\" />
+    </ItemGroup>
+
 </Project>
