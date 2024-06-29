@@ -3,6 +3,7 @@ using System.Web;
 using Infotrack.Application.Data;
 using Infotrack.Application.Exceptions;
 using Infotrack.Domain.Models;
+using Infotrack.Domain.ValueObjects;
 using MediatR;
 
 namespace Infotrack.Application.Queries.GetRanking;
@@ -11,7 +12,7 @@ public class GetRankingHandler(IApplicationDbContext dbContext) : IRequestHandle
 {
     public async Task<GetRankingQueryResult> Handle(GetRankingQuery request, CancellationToken cancellationToken)
     {
-        var searchEngine = dbContext.SearchEngines.Find(request.SearchEngineId);
+        var searchEngine = dbContext.SearchEngines.Find(SearchEngineId.Of(request.SearchEngineId));
 
         if (searchEngine == null)
         {
@@ -21,13 +22,12 @@ public class GetRankingHandler(IApplicationDbContext dbContext) : IRequestHandle
         using HttpClient httpClient = new HttpClient();
         var keySearch = request.Keywords.Replace(" ", "+");
         var baseUrl = searchEngine.BaseUrl;
-        var searchUrl = baseUrl + keySearch;
+        var searchUrl = string.Format(baseUrl, request.NumOfResults, keySearch);
 
         string response = HttpUtility.HtmlDecode(await httpClient.GetStringAsync(searchUrl, cancellationToken));
         var links = ExtractResponse(searchEngine, response);
         var rankingList = links.Where(link => link.Contains(request.WebsiteUrl, StringComparison.OrdinalIgnoreCase))
             .Select(link => links.IndexOf(link) + 1)
-            .Distinct()
             .ToList();
 
         return new GetRankingQueryResult(rankingList);

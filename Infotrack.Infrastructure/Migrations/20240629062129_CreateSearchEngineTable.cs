@@ -32,7 +32,7 @@ namespace Infotrack.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "SearchEngines",
                 columns: new[] { "Id", "BaseUrl", "CreatedAt", "CreatedBy", "LastModified", "LastModifiedBy", "Name", "RegEx" },
-                values: new object[] { new Guid("7b131662-36a8-45f9-bf6a-e69f208202b0"), "https://www.google.co.uk/search", null, null, null, null, "Google", "/url?q=(.*?)&sa=U&ved=" });
+                values: new object[] { new Guid("576248bd-8b8c-4ede-8a1e-8efd6c84110a"), "https://www.google.co.uk/search?num={0}&q={1}", null, null, null, null, "Google", "<div\\s+class=\"BNeawe\\s+UPmit\\s+AP7Wnd\\s+lRVwie\">([^<]*)<\\/div>" });
         }
 
         /// <inheritdoc />

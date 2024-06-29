@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infotrack.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240629002110_CreateSearchEngineTable")]
+    [Migration("20240629062129_CreateSearchEngineTable")]
     partial class CreateSearchEngineTable
     {
         /// <inheritdoc />
@@ -61,10 +61,10 @@ namespace Infotrack.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7b131662-36a8-45f9-bf6a-e69f208202b0"),
-                            BaseUrl = "https://www.google.co.uk/search",
+                            Id = new Guid("576248bd-8b8c-4ede-8a1e-8efd6c84110a"),
+                            BaseUrl = "https://www.google.co.uk/search?num={0}&q={1}",
                             Name = "Google",
-                            RegEx = "/url?q=(.*?)&sa=U&ved="
+                            RegEx = "<div\\s+class=\"BNeawe\\s+UPmit\\s+AP7Wnd\\s+lRVwie\">([^<]*)<\\/div>"
                         });
                 });
 #pragma warning restore 612, 618

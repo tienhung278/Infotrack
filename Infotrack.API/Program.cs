@@ -1,4 +1,5 @@
 using Infotrack.API;
+using Infotrack.Application;
 using Infotrack.Infrastructure;
 using Infotrack.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
+    .AddApplicationServices(builder.Configuration)
     .AddInfrastructureServices(builder.Configuration)
     .AddApiServices(builder.Configuration);
 

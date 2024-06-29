@@ -16,7 +16,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         builder.Entity<SearchEngine>().HasData(SearchEngine.Create(SearchEngineId.Of(Guid.NewGuid()), "Google",
-            "https://www.google.co.uk/search", "/url?q=(.*?)&sa=U&ved="));
+            "https://www.google.co.uk/search?num={0}&q={1}", "<div\\s+class=\"BNeawe\\s+UPmit\\s+AP7Wnd\\s+lRVwie\">([^<]*)<\\/div>"));
         
         base.OnModelCreating(builder);
     }
