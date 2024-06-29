@@ -1,35 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
-import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {Component} from "@angular/core";
+import {SearchComponent} from "./components/search/search.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [
+    SearchComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
-  searchEngines:[];
-  results;
-  myForm: FormGroup;
+export class AppComponent {
 
-  constructor(private fb: FormBuilder) {
-    this.searchEngines = [];
-    this.results = '';
-    this.myForm = fb.group({
-      numOfResults: 100,
-      keyword: 'land registry search',
-      websiteUrl: 'www.infotrack.co.uk',
-      searchEngineId: ''
-    });
-  }
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
-  onSubmit(myForm: FormGroup) {
-
-  }
 }
