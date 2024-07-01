@@ -17,7 +17,7 @@ public class GetRankingHandlerTest
         var id = Guid.NewGuid();
         var searchEngines = new List<Domain.Models.SearchEngine>
         {
-            Domain.Models.SearchEngine.Create(SearchEngineId.Of(id), "Google", "www.infotract.co.uk",
+            Domain.Models.SearchEngine.Create(SearchEngineId.Of(id), "Google", "www.infotrack.co.uk",
                 "test")
         };
         var dbContext =

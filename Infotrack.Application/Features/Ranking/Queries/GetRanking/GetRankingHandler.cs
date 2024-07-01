@@ -12,7 +12,8 @@ public class GetRankingHandler(IApplicationDbContext dbContext) : IRequestHandle
 {
     public async Task<GetRankingQueryResult> Handle(GetRankingQuery request, CancellationToken cancellationToken)
     {
-        var searchEngine = dbContext.SearchEngines.FirstOrDefault(s => s.Id.Value == request.SearchEngineId);
+        var searchEngines = dbContext.SearchEngines.ToList();
+        var searchEngine = searchEngines.FirstOrDefault(s => s.Id.Value == request.SearchEngineId);
 
         if (searchEngine == null)
         {
